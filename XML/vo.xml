@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vos:node xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xmlns:vos="http://www.ivoa.net/xml/VOSpace/v2.1" xs:type="vos:UnstructuredDataNode" uri="vos://example.com!vospace/mydata1">
+  <vos:properties>
+    <vos:property readOnly="False" uri="ivo://ivoa.net/vospace/core#description">My important results</vos:property>
+  </vos:properties>
+  <vos:accepts/>
+  <vos:provides/>
+  <vos:capabilities/>
+</vos:node>

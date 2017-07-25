@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% block head %}
+    <link rel="stylesheet" href="style.css" />
+    <title>{% block title %}{% endblock %} - CDS VOSpace</title>
+    {% endblock %}
+</head>
+<body>
+    <div id="body">{% block body %}{% endblock %}</div>
+    <div id="footer">
+        {% block footer %}
+        &copy; Copyright 2017 by <a href="http://cdsweb.u-strasbg.fr/index-fr.gml">CDS</a>.
+        {% endblock %}
+    </div>
+</body>
+</html>

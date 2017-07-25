@@ -1,0 +1,1 @@
+<vos:node xmlns:vos="http://www.ivoa.net/xml/VOSpace/v2.1" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" uri="./VOTest/VOSpace/nodes/myresult1/" xs:type="vos:ContainerNode"></vos:node>

@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Exception - CDS VOSpace</title>
+
+</head>
+<body>
+<h1>Exceptions - CDS VOSpace</h1>
+
+<table><tr>2017-07-19 17:05:05,757- __main__ - ERROR - Exception on /nodes/myresult1 [PUT]<tr></table>
+Traceback (most recent call last):
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "app.py", line 68, in api_node
+    xmltodict = Parser().xml_parser(request.data.decode("utf-8"))
+  File "/home/bouchair/PycharmProjects/VOSpace/core/parser.py", line 43, in xml_parser
+    xmltodict['properties'][ind].append(v)
+KeyError: ''
+<br>
+<br>
+<table><tr>2017-07-19 17:11:13,647- __main__ - ERROR - Exception on /errors [GET]<tr></table>
+Traceback (most recent call last):
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "app.py", line 149, in api_error
+    return make_response(render_template('API.html'), 200)
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/templating.py", line 133, in render_template
+    return _render(ctx.app.jinja_env.get_or_select_template(template_name_or_list),
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/jinja2/environment.py", line 869, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/jinja2/environment.py", line 830, in get_template
+    return self._load_template(name, self.make_globals(globals))
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/jinja2/environment.py", line 804, in _load_template
+    template = self.loader.load(self, name, globals)
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/jinja2/loaders.py", line 113, in load
+    source, filename, uptodate = self.get_source(environment, name)
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/templating.py", line 57, in get_source
+    return self._get_source_fast(environment, template)
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/templating.py", line 85, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: API.html
+
+<br><br><table><tr><font color="red"> 2017-07-20 09:40:02,242- __main__ - ERROR - Exception on /nodes/myresult1 [PUT]</font><tr></table>
+Traceback (most recent call last):
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "app.py", line 68, in api_node
+    xmltodict = Parser().xml_parser(request.data.decode("utf-8"))
+  File "/home/bouchair/PycharmProjects/VOSpace/core/parser.py", line 23, in xml_parser
+    root = ET.fromstring(xml)
+  File "/usr/lib/python3.5/xml/etree/ElementTree.py", line 1334, in XML
+    return parser.close()
+  File "<string>", line None
+xml.etree.ElementTree.ParseError: no element found: line 1, column 0
+<br><br><table><tr><font color="red"> 2017-07-20 09:50:14,083- __main__ - ERROR - Exception on /nodes/myresult1 [PUT]</font><tr></table>
+Traceback (most recent call last):
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "app.py", line 68, in api_node
+    xmltodict = Parser().xml_parser(request.data.decode("utf-8"))
+  File "/home/bouchair/PycharmProjects/VOSpace/core/parser.py", line 43, in xml_parser
+    xmltodict['properties'][ind].append(v)
+KeyError: ''
+<br><br><table><tr><font color="red"> 2017-07-20 09:56:33,433- __main__ - ERROR - Exception on /nodes/myresult1 [PUT]</font><tr></table>
+Traceback (most recent call last):
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "app.py", line 68, in api_node
+    xmltodict = Parser().xml_parser(request.data.decode("utf-8"))
+  File "/home/bouchair/PycharmProjects/VOSpace/core/parser.py", line 43, in xml_parser
+    xmltodict['properties'][ind].append(v)
+KeyError: ''
+<br><br><table><tr><font color="red"> 2017-07-20 10:02:53,722- __main__ - ERROR - Exception on /nodes/myresult1 [PUT]</font><tr></table>
+Traceback (most recent call last):
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "app.py", line 68, in api_node
+    xmltodict = Parser().xml_parser(request.data.decode("utf-8"))
+  File "/home/bouchair/PycharmProjects/VOSpace/core/parser.py", line 43, in xml_parser
+    xmltodict['properties'][ind].append(v)
+KeyError: ''
+<br><br><table><tr><font color="red"> 2017-07-20 10:22:52,906- __main__ - ERROR - Exception on /nodes/myresult1/testdecreation [DELETE]</font><tr></table>
+Traceback (most recent call last):
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/app.py", line 1615, in full_dispatch_request
+    return self.finalize_request(rv)
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/app.py", line 1630, in finalize_request
+    response = self.make_response(rv)
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/app.py", line 1725, in make_response
+    raise ValueError('View function did not return a response')
+ValueError: View function did not return a response
+<br><br><table><tr><font color="red"> 2017-07-20 10:24:15,509- __main__ - ERROR - Exception on /nodes/myresult1/testdecreation [DELETE]</font><tr></table>
+Traceback (most recent call last):
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/app.py", line 1615, in full_dispatch_request
+    return self.finalize_request(rv)
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/app.py", line 1630, in finalize_request
+    response = self.make_response(rv)
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/app.py", line 1740, in make_response
+    rv = self.response_class.force_type(rv, request.environ)
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/werkzeug/wrappers.py", line 885, in force_type
+    response = BaseResponse(*_run_wsgi_app(response, environ))
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/werkzeug/wrappers.py", line 57, in _run_wsgi_app
+    return _run_wsgi_app(*args)
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/werkzeug/test.py", line 884, in run_wsgi_app
+    app_rv = app(environ, start_response)
+TypeError: 'bool' object is not callable
+<br><br><table><tr><font color="red"> 2017-07-20 10:31:34,047- __main__ - ERROR - Exception on /nodes/myresult1/testdecreation [DELETE]</font><tr></table>
+Traceback (most recent call last):
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/app.py", line 1615, in full_dispatch_request
+    return self.finalize_request(rv)
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/app.py", line 1630, in finalize_request
+    response = self.make_response(rv)
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/app.py", line 1725, in make_response
+    raise ValueError('View function did not return a response')
+ValueError: View function did not return a response
+<br><br><table><tr><font color="red"> 2017-07-20 10:34:29,289- __main__ - ERROR - Exception on /nodes/myresult1 [PUT]</font><tr></table>
+Traceback (most recent call last):
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "app.py", line 113, in api_node
+    xmltodict = xml_parser(request.data.decode("utf-8"))
+  File "app.py", line 47, in xml_parser
+    xmltodict['properties'][ind].append(v)
+KeyError: ''
+<br><br><table><tr><font color="red"> 2017-07-20 10:35:24,883- __main__ - ERROR - Exception on /nodes/myresult1 [PUT]</font><tr></table>
+Traceback (most recent call last):
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "app.py", line 113, in api_node
+    xmltodict = xml_parser(request.data.decode("utf-8"))
+  File "app.py", line 47, in xml_parser
+    xmltodict['properties'][ind].append(v)
+KeyError: ''
+<br><br><table><tr><font color="red"> '2017-07-20 10:45:30,743 ERROR: Exception on /nodes/myresult1/testdecreation [DELETE] ''[in /home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/app.py:1560]'</font><tr></table>
+Traceback (most recent call last):
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/app.py", line 1615, in full_dispatch_request
+    return self.finalize_request(rv)
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/app.py", line 1630, in finalize_request
+    response = self.make_response(rv)
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/app.py", line 1725, in make_response
+    raise ValueError('View function did not return a response')
+ValueError: View function did not return a response
+<br><br><table><tr><font color="red"> '2017-07-20 10:46:58,331 ERROR: Exception on /nodes/myresult1 [PUT] ''[in /home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/app.py:1560]'</font><tr></table>
+Traceback (most recent call last):
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "app.py", line 113, in api_node
+    xmltodict = xml_parser(request.data.decode("utf-8"))
+  File "app.py", line 47, in xml_parser
+    xmltodict['properties'][ind].append(v)
+KeyError: ''
+<br><br><table><tr><font color="red"> '2017-07-20 10:48:25,419 ERROR: Exception on /nodes/myresult1/testdecreation [DELETE] ''[in /home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/app.py:1560]'</font><tr></table>
+Traceback (most recent call last):
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/app.py", line 1615, in full_dispatch_request
+    return self.finalize_request(rv)
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/app.py", line 1630, in finalize_request
+    response = self.make_response(rv)
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/app.py", line 1725, in make_response
+    raise ValueError('View function did not return a response')
+ValueError: View function did not return a response
+<br><br><table><tr><font color="red"> '2017-07-20 10:54:04,280 ERROR: Exception on /nodes/iyapici/tata/Folder [PUT] ''[in /home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/app.py:1560]'</font><tr></table>
+Traceback (most recent call last):
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "app.py", line 113, in api_node
+    xmltodict = xml_parser(request.data.decode("utf-8"))
+  File "app.py", line 27, in xml_parser
+    root = ET.fromstring(xml)
+  File "/usr/lib/python3.5/xml/etree/ElementTree.py", line 1333, in XML
+    parser.feed(text)
+  File "<string>", line None
+xml.etree.ElementTree.ParseError: syntax error: line 1, column 0
+<br><br><table><tr><td><font color="red"> 2017-07-20 11:20:39,897- __main__ - ERROR </td> Exception on /nodes/myresult1 [PUT]</font><tr></table>
+Traceback (most recent call last):
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "app.py", line 113, in api_node
+    xmltodict = xml_parser(request.data.decode("utf-8"))
+  File "app.py", line 47, in xml_parser
+    xmltodict['properties'][ind].append(v)
+KeyError: ''
+<br><br><table><tr><td><font color="red"> 2017-07-20 11:27:23,834- __main__ - ERROR </td> Exception on /nodes/myresult1 [PUT]</font><tr></table>
+Traceback (most recent call last):
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "app.py", line 113, in api_node
+    xmltodict = xml_parser(request.data.decode("utf-8"))
+  File "app.py", line 47, in xml_parser
+    xmltodict['properties'][ind].append(v)
+KeyError: ''
+<br><br><table><tr><td><font color="red"> 2017-07-20 14:40:21,938- __main__ - ERROR - Exception on /nodes/myresult1/testdecreation [DELETE]</font><tr></table>
+Traceback (most recent call last):
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/app.py", line 1615, in full_dispatch_request
+    return self.finalize_request(rv)
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/app.py", line 1630, in finalize_request
+    response = self.make_response(rv)
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/app.py", line 1725, in make_response
+    raise ValueError('View function did not return a response')
+ValueError: View function did not return a response
+<br><br><table><tr><td><font color="red"> 2017-07-20 14:49:03,718- __main__ - ERROR - Exception on /nodes/myresult1/testdecreation [DELETE]</font><tr></table>
+Traceback (most recent call last):
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/app.py", line 1615, in full_dispatch_request
+    return self.finalize_request(rv)
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/app.py", line 1630, in finalize_request
+    response = self.make_response(rv)
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/app.py", line 1725, in make_response
+    raise ValueError('View function did not return a response')
+ValueError: View function did not return a response
+<br><br><table><tr><td><font color="red"> 2017-07-20 14:49:21,902- __main__ - ERROR - Exception on /nodes/myresult1/testdecreation [DELETE]</font><tr></table>
+Traceback (most recent call last):
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/app.py", line 1615, in full_dispatch_request
+    return self.finalize_request(rv)
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/app.py", line 1630, in finalize_request
+    response = self.make_response(rv)
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/app.py", line 1725, in make_response
+    raise ValueError('View function did not return a response')
+ValueError: View function did not return a response
+<br><br><table><tr><td><font color="red"> 2017-07-20 14:54:24,522- __main__ - ERROR - Exception on /nodes/myresult1/testdecreation [DELETE]</font><tr></table>
+Traceback (most recent call last):
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/app.py", line 1615, in full_dispatch_request
+    return self.finalize_request(rv)
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/app.py", line 1630, in finalize_request
+    response = self.make_response(rv)
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/app.py", line 1725, in make_response
+    raise ValueError('View function did not return a response')
+ValueError: View function did not return a response
+<br><br><table><tr><td><font color="red"> 2017-07-20 15:19:20,377- __main__ - ERROR - Exception on /nodes/myresult1/testdecreation [DELETE]</font><tr></table>
+Traceback (most recent call last):
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/app.py", line 1615, in full_dispatch_request
+    return self.finalize_request(rv)
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/app.py", line 1630, in finalize_request
+    response = self.make_response(rv)
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/app.py", line 1725, in make_response
+    raise ValueError('View function did not return a response')
+ValueError: View function did not return a response
+<br><br><table><tr><td><font color="red"> 2017-07-20 16:29:02,908- __main__ - ERROR - Exception on /nodes/myresult1/testdecreation [DELETE]</font><tr></table>
+Traceback (most recent call last):
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/app.py", line 1615, in full_dispatch_request
+    return self.finalize_request(rv)
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/app.py", line 1630, in finalize_request
+    response = self.make_response(rv)
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/app.py", line 1740, in make_response
+    rv = self.response_class.force_type(rv, request.environ)
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/werkzeug/wrappers.py", line 885, in force_type
+    response = BaseResponse(*_run_wsgi_app(response, environ))
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/werkzeug/wrappers.py", line 57, in _run_wsgi_app
+    return _run_wsgi_app(*args)
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/werkzeug/test.py", line 884, in run_wsgi_app
+    app_rv = app(environ, start_response)
+TypeError: 'HTTPStatus' object is not callable
+<br><br><table><tr><td><font color="red"> 2017-07-20 16:30:07,486- __main__ - ERROR - Exception on /nodes/myresult1/testdecreation [DELETE]</font><tr></table>
+Traceback (most recent call last):
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/app.py", line 1615, in full_dispatch_request
+    return self.finalize_request(rv)
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/app.py", line 1630, in finalize_request
+    response = self.make_response(rv)
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/app.py", line 1725, in make_response
+    raise ValueError('View function did not return a response')
+ValueError: View function did not return a response
+<br><br><table><tr><td><font color="red"> 2017-07-20 16:30:16,569- __main__ - ERROR - Exception on /nodes/myresult1/testdecreation [DELETE]</font><tr></table>
+Traceback (most recent call last):
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/app.py", line 1615, in full_dispatch_request
+    return self.finalize_request(rv)
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/app.py", line 1630, in finalize_request
+    response = self.make_response(rv)
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/app.py", line 1725, in make_response
+    raise ValueError('View function did not return a response')
+ValueError: View function did not return a response
+<br><br><table><tr><td><font color="red"> 2017-07-20 17:00:47,804- __main__ - ERROR - Exception on /nodes/iyapici/tata/Java [DELETE]</font><tr></table>
+Traceback (most recent call last):
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/app.py", line 1615, in full_dispatch_request
+    return self.finalize_request(rv)
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/app.py", line 1630, in finalize_request
+    response = self.make_response(rv)
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/app.py", line 1725, in make_response
+    raise ValueError('View function did not return a response')
+ValueError: View function did not return a response
+<br><br><table><tr><td><font color="red"> 2017-07-21 14:30:27,035- __main__ - ERROR - Exception on /nodes/myresult1/AAAAAAAA [DELETE]</font><tr></table>
+Traceback (most recent call last):
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/bouchair/PycharmProjects/VOSpace/env/lib/python3.5/site-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "app.py", line 76, in api_node
+    Vospace().deleteNode("nodes/" + varargs)
+TypeError: Can't instantiate abstract class Vospace with abstract methods copyNode, moveNode
+<br><br><table><tr><td><font color="red"> 2017-07-21 14:49:05,391- __main__ - ERROR - Exception on /nodes/myresult1 [POST]</font><tr></table>
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.5/dist-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "app.py", line 67, in api_node
+    Vospace().setNode(Parser().xmltodict['path'], xmltodict['properties'])
+AttributeError: 'Parser' object has no attribute 'xmltodict'
+<br><br><table><tr><td><font color="red"> 2017-07-24 14:28:46,336- __main__ - ERROR - Exception on /nodes/myresult1 [PUT]</font><tr></table>
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/usr/local/lib/python3.5/dist-packages/flask_restplus/api.py", line 313, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/flask_restplus/resource.py", line 44, in dispatch_request
+    resp = meth(*args, **kwargs)
+TypeError: put() got an unexpected keyword argument 'path'
+<br><br><table><tr><td><font color="red"> 2017-07-24 14:29:32,881- __main__ - ERROR - Exception on /nodes/myresult1 [PUT]</font><tr></table>
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/usr/local/lib/python3.5/dist-packages/flask_restplus/api.py", line 313, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/flask_restplus/resource.py", line 44, in dispatch_request
+    resp = meth(*args, **kwargs)
+TypeError: put() got an unexpected keyword argument 'path'
+<br><br><table><tr><td><font color="red"> 2017-07-24 14:33:48,502- __main__ - ERROR - Exception on /nodes/myresult1 [PUT]</font><tr></table>
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/usr/local/lib/python3.5/dist-packages/flask_restplus/api.py", line 313, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/flask_restplus/resource.py", line 44, in dispatch_request
+    resp = meth(*args, **kwargs)
+TypeError: put() got an unexpected keyword argument 'path'
+<br><br><table><tr><td><font color="red"> 2017-07-24 16:20:02,373- __main__ - ERROR - Exception on /nodes/myresult1 [PUT]</font><tr></table>
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/usr/local/lib/python3.5/dist-packages/flask_restplus/api.py", line 313, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/flask_restplus/resource.py", line 44, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "app.py", line 49, in decorated
+    return f(*args, **kwargs)
+  File "app.py", line 77, in put
+    xmltodict = Parser().xml_parser(request.data.decode("utf-8"))
+  File "/home/bouchair/PycharmProjects/VOSpace/parser.py", line 33, in xml_parser
+    xmltodict['parent'] = os.path.basename(uri)
+  File "/usr/lib/python3.5/posixpath.py", line 139, in basename
+    i = p.rfind(sep) + 1
+AttributeError: 'list' object has no attribute 'rfind'
+<br><br><table><tr><td><font color="red"> 2017-07-24 16:51:42,647- __main__ - ERROR - Exception on /nodes/myresult1 [PUT]</font><tr></table>
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/usr/local/lib/python3.5/dist-packages/flask_restplus/api.py", line 313, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/flask_restplus/resource.py", line 44, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "app.py", line 49, in decorated
+    return f(*args, **kwargs)
+  File "app.py", line 77, in put
+    xmltodict = Parser().xml_parser(request.data.decode("utf-8"))
+  File "/home/bouchair/PycharmProjects/VOSpace/parser.py", line 48, in xml_parser
+    xmltodict['properties'][ind] = [subchildrens.text, _]
+UnboundLocalError: local variable '_' referenced before assignment
+<br><br><table><tr><td><font color="red"> 2017-07-24 16:53:13,617- __main__ - ERROR - Exception on /nodes/myresult1 [PUT]</font><tr></table>
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/usr/local/lib/python3.5/dist-packages/flask_restplus/api.py", line 313, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/flask_restplus/resource.py", line 44, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "app.py", line 49, in decorated
+    return f(*args, **kwargs)
+  File "app.py", line 77, in put
+    xmltodict = Parser().xml_parser(request.data.decode("utf-8"))
+  File "/home/bouchair/PycharmProjects/VOSpace/parser.py", line 50, in xml_parser
+    if not _:
+UnboundLocalError: local variable '_' referenced before assignment
+<br><br><table><tr><td><font color="red"> 2017-07-24 16:57:19,732- __main__ - ERROR - Exception on /nodes/myresult1 [PUT]</font><tr></table>
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/usr/local/lib/python3.5/dist-packages/flask_restplus/api.py", line 313, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/flask_restplus/resource.py", line 44, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "app.py", line 49, in decorated
+    return f(*args, **kwargs)
+  File "app.py", line 79, in put
+    return Response(self.getNode(xmltodict['path']), status=201, mimetype='text/xml')
+AttributeError: 'MyResource' object has no attribute 'getNode'
+<br><br><table><tr><td><font color="red"> 2017-07-24 17:00:16,953- __main__ - ERROR - Exception on /nodes/myresult1 [PUT]</font><tr></table>
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/usr/local/lib/python3.5/dist-packages/flask_restplus/api.py", line 317, in wrapper
+    return self.make_response(data, code, headers=headers)
+  File "/usr/local/lib/python3.5/dist-packages/flask_restplus/api.py", line 338, in make_response
+    resp = self.representations[mediatype](data, *args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/flask_restplus/representations.py", line 22, in output_json
+    dumped = dumps(data, **settings) + "\n"
+  File "/usr/lib/python3.5/json/__init__.py", line 237, in dumps
+    **kw).encode(obj)
+  File "/usr/lib/python3.5/json/encoder.py", line 200, in encode
+    chunks = list(chunks)
+  File "/usr/lib/python3.5/json/encoder.py", line 436, in _iterencode
+    o = _default(o)
+  File "/usr/lib/python3.5/json/encoder.py", line 179, in default
+    raise TypeError(repr(o) + " is not JSON serializable")
+TypeError: <function node_not_found at 0x7f1d778857b8> is not JSON serializable
+<br><br><table><tr><td><font color="red"> 2017-07-24 17:01:00,265- __main__ - ERROR - Exception on /nodes/myresult1 [PUT]</font><tr></table>
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/usr/local/lib/python3.5/dist-packages/flask_restplus/api.py", line 317, in wrapper
+    return self.make_response(data, code, headers=headers)
+  File "/usr/local/lib/python3.5/dist-packages/flask_restplus/api.py", line 338, in make_response
+    resp = self.representations[mediatype](data, *args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/flask_restplus/representations.py", line 22, in output_json
+    dumped = dumps(data, **settings) + "\n"
+  File "/usr/lib/python3.5/json/__init__.py", line 237, in dumps
+    **kw).encode(obj)
+  File "/usr/lib/python3.5/json/encoder.py", line 200, in encode
+    chunks = list(chunks)
+  File "/usr/lib/python3.5/json/encoder.py", line 436, in _iterencode
+    o = _default(o)
+  File "/usr/lib/python3.5/json/encoder.py", line 179, in default
+    raise TypeError(repr(o) + " is not JSON serializable")
+TypeError: <function node_not_found at 0x7f0174ebe7b8> is not JSON serializable
+<br><br><table><tr><td><font color="red"> 2017-07-24 17:03:05,757- __main__ - ERROR - Exception on /nodes/myresult1 [PUT]</font><tr></table>
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/usr/local/lib/python3.5/dist-packages/flask_restplus/api.py", line 317, in wrapper
+    return self.make_response(data, code, headers=headers)
+  File "/usr/local/lib/python3.5/dist-packages/flask_restplus/api.py", line 338, in make_response
+    resp = self.representations[mediatype](data, *args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/flask_restplus/representations.py", line 22, in output_json
+    dumped = dumps(data, **settings) + "\n"
+  File "/usr/lib/python3.5/json/__init__.py", line 237, in dumps
+    **kw).encode(obj)
+  File "/usr/lib/python3.5/json/encoder.py", line 200, in encode
+    chunks = list(chunks)
+  File "/usr/lib/python3.5/json/encoder.py", line 436, in _iterencode
+    o = _default(o)
+  File "/usr/lib/python3.5/json/encoder.py", line 179, in default
+    raise TypeError(repr(o) + " is not JSON serializable")
+TypeError: <function node_not_found at 0x7f4b967c37b8> is not JSON serializable
+<br><br><table><tr><td><font color="red"> 2017-07-24 17:09:47,461- __main__ - ERROR - Exception on /nodes/myresult1 [PUT]</font><tr></table>
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/usr/local/lib/python3.5/dist-packages/flask_restplus/api.py", line 313, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/flask_restplus/resource.py", line 44, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "app.py", line 49, in decorated
+    return f(*args, **kwargs)
+  File "app.py", line 80, in put
+    return Response(Vospace().getNode(xmltodict[path]), status=201, mimetype='text/xml')
+KeyError: 'myresult1'
+<br><br><table><tr><td><font color="red"> 2017-07-25 09:59:40,265- __main__ - ERROR - Exception on /swagger.json [GET]</font><tr></table>
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/usr/local/lib/python3.5/dist-packages/flask_restplus/api.py", line 317, in wrapper
+    return self.make_response(data, code, headers=headers)
+  File "/usr/local/lib/python3.5/dist-packages/flask_restplus/api.py", line 338, in make_response
+    resp = self.representations[mediatype](data, *args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/flask_restplus/representations.py", line 22, in output_json
+    dumped = dumps(data, **settings) + "\n"
+  File "/usr/lib/python3.5/json/__init__.py", line 237, in dumps
+    **kw).encode(obj)
+  File "/usr/lib/python3.5/json/encoder.py", line 200, in encode
+    chunks = list(chunks)
+  File "/usr/lib/python3.5/json/encoder.py", line 429, in _iterencode
+    yield from _iterencode_dict(o, _current_indent_level)
+  File "/usr/lib/python3.5/json/encoder.py", line 403, in _iterencode_dict
+    yield from chunks
+  File "/usr/lib/python3.5/json/encoder.py", line 403, in _iterencode_dict
+    yield from chunks
+  File "/usr/lib/python3.5/json/encoder.py", line 403, in _iterencode_dict
+    yield from chunks
+  File "/usr/lib/python3.5/json/encoder.py", line 403, in _iterencode_dict
+    yield from chunks
+  File "/usr/lib/python3.5/json/encoder.py", line 324, in _iterencode_list
+    yield from chunks
+  File "/usr/lib/python3.5/json/encoder.py", line 403, in _iterencode_dict
+    yield from chunks
+  File "/usr/lib/python3.5/json/encoder.py", line 436, in _iterencode
+    o = _default(o)
+  File "/usr/lib/python3.5/json/encoder.py", line 179, in default
+    raise TypeError(repr(o) + " is not JSON serializable")
+TypeError: <class 'type'> is not JSON serializable
+<br><br><table><tr><td><font color="red"> 2017-07-25 09:59:42,044- __main__ - ERROR - Exception on /swagger.json [GET]</font><tr></table>
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/usr/local/lib/python3.5/dist-packages/flask_restplus/api.py", line 317, in wrapper
+    return self.make_response(data, code, headers=headers)
+  File "/usr/local/lib/python3.5/dist-packages/flask_restplus/api.py", line 338, in make_response
+    resp = self.representations[mediatype](data, *args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/flask_restplus/representations.py", line 22, in output_json
+    dumped = dumps(data, **settings) + "\n"
+  File "/usr/lib/python3.5/json/__init__.py", line 237, in dumps
+    **kw).encode(obj)
+  File "/usr/lib/python3.5/json/encoder.py", line 200, in encode
+    chunks = list(chunks)
+  File "/usr/lib/python3.5/json/encoder.py", line 429, in _iterencode
+    yield from _iterencode_dict(o, _current_indent_level)
+  File "/usr/lib/python3.5/json/encoder.py", line 403, in _iterencode_dict
+    yield from chunks
+  File "/usr/lib/python3.5/json/encoder.py", line 403, in _iterencode_dict
+    yield from chunks
+  File "/usr/lib/python3.5/json/encoder.py", line 403, in _iterencode_dict
+    yield from chunks
+  File "/usr/lib/python3.5/json/encoder.py", line 403, in _iterencode_dict
+    yield from chunks
+  File "/usr/lib/python3.5/json/encoder.py", line 324, in _iterencode_list
+    yield from chunks
+  File "/usr/lib/python3.5/json/encoder.py", line 403, in _iterencode_dict
+    yield from chunks
+  File "/usr/lib/python3.5/json/encoder.py", line 436, in _iterencode
+    o = _default(o)
+  File "/usr/lib/python3.5/json/encoder.py", line 179, in default
+    raise TypeError(repr(o) + " is not JSON serializable")
+TypeError: <class 'type'> is not JSON serializable
+<br><br><table><tr><td><font color="red"> 2017-07-25 10:24:50,091- __main__ - ERROR - Exception on /nodes/myresult1 [PUT]</font><tr></table>
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/usr/local/lib/python3.5/dist-packages/flask_restplus/api.py", line 313, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/flask_restplus/resource.py", line 44, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "app.py", line 46, in decorated
+    return f(*args, **kwargs)
+TypeError: put() got an unexpected keyword argument 'id'
+<br><br><table><tr><td><font color="red"> 2017-07-25 10:26:06,111- __main__ - ERROR - Exception on /nodes/myresult1 [PUT]</font><tr></table>
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/usr/local/lib/python3.5/dist-packages/flask_restplus/api.py", line 313, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/flask_restplus/resource.py", line 44, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "app.py", line 46, in decorated
+    return f(*args, **kwargs)
+TypeError: put() got an unexpected keyword argument 'account'

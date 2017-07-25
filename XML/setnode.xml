@@ -1,0 +1,11 @@
+<node xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:type="vos:UnstructuredDataNode" xmlns:vos="http://www.ivoa.net/xml/VOSpace/v2.1" uri="vos://example.com!nodes/myresult1/BBBBB">
+  <properties>
+  	<vos:property uri="ivo://ivoa.net/vospace/core#description" readOnly="False">Demo</vos:property>
+  	<property uri="ivo://ivoa.net/vospace/core#language" readOnly="False">Anglais</property>
+  </properties>
+  <accepts/>
+  <provides>
+  	<view uri="ivo://ivoa.net/vospace/core#defaultview"/>
+  </provides>
+  <capabilities/>
+</node>

@@ -1,0 +1,9 @@
+<vos:node xmlns:xs="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:vos="http://www.ivoa.net/xml/VOSpace/v2.1" xs:type="vos:UnstructuredDataNode" uri="vos://example.com!nodes/myresult1/UHASerfa">
+  <vos:properties>
+  	<property uri="ivo://ivoa.net/vospace/core#title" readOnly="false">Soutenance de Stage</property>
+  </vos:properties>
+  <vos:accepts/>
+  <vos:provides/>
+  <vos:capabilities/>
+</vos:node>

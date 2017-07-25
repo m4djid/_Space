@@ -29,10 +29,6 @@ class Vospace(Backend):
     # Get the node data
     def getNode(self, target, parent, ancestor):
         # Return the node's representation
-        if not ancestor:
-            # MongoDB ancestor field will not work if
-            # ancestor = ['']
-            ancestor = []
         node = {
             'children': [],
             'properties': {},
@@ -42,19 +38,22 @@ class Vospace(Backend):
         }
         try:
                 meta = mydb().getNode(target, parent, ancestor)
-                node['busy'] = meta['busy']
-                node['path'] = deepcopy(meta['path'])
-                node['properties'] = deepcopy(meta['properties'])
-                node['accepts'] = deepcopy(meta['accepts'])
-                node['provides'] = deepcopy(meta['provides'])
-                # If the parent is not empty, it is added to
-                # the ancestor list to find the subnodes
-                if parent != '':
-                    ancestor.append(parent)
-                cursor = mydb().getChildrenNode(target, ancestor)
-                for items in cursor:
-                    node['children'].append(items)
-                return xml().xml_generator("get",node)
+                if meta == {}:
+                    return False
+                else:
+                    node['busy'] = meta['busy']
+                    node['path'] = deepcopy(meta['path'])
+                    node['properties'] = deepcopy(meta['properties'])
+                    node['accepts'] = deepcopy(meta['accepts'])
+                    node['provides'] = deepcopy(meta['provides'])
+                    # If the parent is not empty, it is added to
+                    # the ancestor list to find the subnodes
+                    if parent != '':
+                        ancestor.append(parent)
+                    cursor = mydb().getChildrenNode(target, ancestor)
+                    for items in cursor:
+                        node['children'].append(items)
+                    return xml().xml_generator("get",node)
         except Exception as e:
             return e
 

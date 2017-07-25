@@ -9,16 +9,10 @@ from parser import Parser
 
 app = Flask(__name__)
 
-authorizations = {
-    'login': {
-        'type': 'login:password',
-        'in': 'header',
-        'name': 'login'
-    }
-}
+
 
 api = Api(app, version='1.0', title='CDS VOSpace',
-    description='Prototype de VOSpace', authorizations=authorizations, security='login')
+    description='Prototype de VOSpace')
 app.config.SWAGGER_UI_LANGUAGES = ['en', 'fr']
 app.config.SWAGGER_UI_DOC_EXPANSION = 'list'
 
@@ -76,12 +70,15 @@ class MyResource(Resource):
     def get(self,path):
         _path, target = os.path.split(path)
         _, parent = os.path.split(_path)
-        if not _:
-            ancestor = []
-        else:
+        if _:
             ancestor = _.split(os.sep)
+        else:
+            ancestor = []
         node = Vospace().getNode(target, parent, ancestor)
-        return Response(node, mimetype='text/xml')
+        if node == False:
+            return make_response(render_template("404.html"), 404)
+        else:
+            return Response(node, mimetype='text/xml')
 
     # @api.doc(params={'XML' : 'XML de modification de la node'})
     # @api.doc('Modifie les metadonnées d\'une node')

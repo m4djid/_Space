@@ -751,3 +751,111 @@ Traceback (most recent call last):
   File "app.py", line 46, in decorated
     return f(*args, **kwargs)
 TypeError: put() got an unexpected keyword argument 'account'
+<br><br><table><tr><td><font color="red"> 2017-07-25 11:34:34,266- __main__ - ERROR - Exception on /nodes/myresult1 [PUT]</font><tr></table>
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/usr/local/lib/python3.5/dist-packages/flask_restplus/api.py", line 313, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/flask_restplus/resource.py", line 44, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "app.py", line 49, in decorated
+    return f(*args, **kwargs)
+  File "app.py", line 97, in put
+    xmltodict = Parser().xml_parser(request.data.decode("utf-8"))
+  File "/home/bouchair/PycharmProjects/VOSpace/parser.py", line 23, in xml_parser
+    root = ET.fromstring(xml)
+  File "/usr/lib/python3.5/xml/etree/ElementTree.py", line 1334, in XML
+    return parser.close()
+  File "<string>", line None
+xml.etree.ElementTree.ParseError: no element found: line 1, column 0
+<br><br><table><tr><td><font color="red"> 2017-07-25 11:35:12,573- __main__ - ERROR - Exception on /nodes/myresult1 [PUT]</font><tr></table>
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/usr/local/lib/python3.5/dist-packages/flask_restplus/api.py", line 313, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/flask_restplus/resource.py", line 44, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "app.py", line 49, in decorated
+    return f(*args, **kwargs)
+  File "app.py", line 97, in put
+    xmltodict = Parser().xml_parser(request.data.decode("utf-8"))
+  File "/home/bouchair/PycharmProjects/VOSpace/parser.py", line 23, in xml_parser
+    root = ET.fromstring(xml)
+  File "/usr/lib/python3.5/xml/etree/ElementTree.py", line 1334, in XML
+    return parser.close()
+  File "<string>", line None
+xml.etree.ElementTree.ParseError: no element found: line 1, column 0
+<br><br><table><tr><td><font color="red"> 2017-07-25 12:30:18,203- __main__ - ERROR - Exception on /nodes/55 [GET]</font><tr></table>
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/usr/local/lib/python3.5/dist-packages/flask_restplus/api.py", line 317, in wrapper
+    return self.make_response(data, code, headers=headers)
+  File "/usr/local/lib/python3.5/dist-packages/flask_restplus/api.py", line 338, in make_response
+    resp = self.representations[mediatype](data, *args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/flask_restplus/representations.py", line 22, in output_json
+    dumped = dumps(data, **settings) + "\n"
+  File "/usr/lib/python3.5/json/__init__.py", line 237, in dumps
+    **kw).encode(obj)
+  File "/usr/lib/python3.5/json/encoder.py", line 200, in encode
+    chunks = list(chunks)
+  File "/usr/lib/python3.5/json/encoder.py", line 436, in _iterencode
+    o = _default(o)
+  File "/usr/lib/python3.5/json/encoder.py", line 179, in default
+    raise TypeError(repr(o) + " is not JSON serializable")
+TypeError: KeyError('busy',) is not JSON serializable
+<br><br><table><tr><td><font color="red"> 2017-07-25 12:30:33,612- __main__ - ERROR - Exception on /nodes/dononono [GET]</font><tr></table>
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/usr/local/lib/python3.5/dist-packages/flask_restplus/api.py", line 317, in wrapper
+    return self.make_response(data, code, headers=headers)
+  File "/usr/local/lib/python3.5/dist-packages/flask_restplus/api.py", line 338, in make_response
+    resp = self.representations[mediatype](data, *args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/flask_restplus/representations.py", line 22, in output_json
+    dumped = dumps(data, **settings) + "\n"
+  File "/usr/lib/python3.5/json/__init__.py", line 237, in dumps
+    **kw).encode(obj)
+  File "/usr/lib/python3.5/json/encoder.py", line 200, in encode
+    chunks = list(chunks)
+  File "/usr/lib/python3.5/json/encoder.py", line 436, in _iterencode
+    o = _default(o)
+  File "/usr/lib/python3.5/json/encoder.py", line 179, in default
+    raise TypeError(repr(o) + " is not JSON serializable")
+TypeError: KeyError('busy',) is not JSON serializable
+<br><br><table><tr><td><font color="red"> 2017-07-25 12:37:03,863- __main__ - ERROR - Exception on /nodes/myresult1 [PUT]</font><tr></table>
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/usr/local/lib/python3.5/dist-packages/flask_restplus/api.py", line 313, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/flask_restplus/resource.py", line 44, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "app.py", line 49, in decorated
+    return f(*args, **kwargs)
+  File "app.py", line 130, in put
+    xmltodict = Parser().xml_parser(request.data.decode("utf-8"))
+  File "/home/bouchair/PycharmProjects/VOSpace/parser.py", line 23, in xml_parser
+    root = ET.fromstring(xml)
+  File "/usr/lib/python3.5/xml/etree/ElementTree.py", line 1334, in XML
+    return parser.close()
+  File "<string>", line None
+xml.etree.ElementTree.ParseError: no element found: line 1, column 0

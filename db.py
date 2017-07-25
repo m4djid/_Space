@@ -26,20 +26,18 @@ class Handler(object):
 
     # Get the metadata representation from mongoDB
     def getNode(self, target, parent, ancestor):
-        try:
-            coll = self.connexion()
-            curseur = coll.find({
+        coll = self.connexion()
+        curseur = coll.find({
             'node': target,
             'parent': parent,
             'ancestor' : ancestor
         }, {"_id": 0})
-            temp = {}
-            for document in curseur:
-                for keys, values in document.items():
-                    temp[keys] = values
-            return temp
-        except CursorNotFound as e:
-            return "Error : %s" % e
+        temp = {}
+        for document in curseur:
+            for keys, values in document.items():
+                temp[keys] = values
+        return temp
+
 
     # Get a node's children's representation
     def getChildrenNode(self, node, ancestor):
@@ -104,8 +102,10 @@ class Handler(object):
 
 
 # a = Handler()
-# a.updateMeta("BBBBB","myresult1",[],"description",["test de création", "True"])
+# # a.updateMeta("BBBBB","myresult1",[],"description",["test de création", "True"])
 #
+# print(a.getNode("tatatata","myresult1",[]))
+
 # a.getChildrenNode("VospaceUws")
 # pprint(a.getMeta("./VOTest/VOSpace/nodes/myresult1"))
 # print(a.nodeExistsChecker('myresult1.txt'))

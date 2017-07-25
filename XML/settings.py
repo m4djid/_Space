@@ -108,6 +108,8 @@ def fstodictionary(path, properties=None):
     owner = str(os.stat(path).st_uid)
     filename = os.path.basename(path)
     parent = os.path.basename(os.path.abspath(os.path.join(path, os.pardir)))
+    if parent == "nodes":
+        parent = ''
     representation = {
         'node': filename,
         'path': path,

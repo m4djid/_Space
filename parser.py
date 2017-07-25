@@ -213,18 +213,18 @@ class Parser(object):
 
                 return self.xml_formateur(top)
 
-a = Parser()
-b = a.xml_parser("""<?xml version="1.0" encoding="UTF-8"?>
-<vos:node xmlns:xs="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:vos="http://www.ivoa.net/xml/VOSpace/v2.1" xs:type="vos:ContainerNode" uri="vos://example.com!nodes/myresult1/BBBBB">
-  <vos:properties>
-  	<vos:property uri="ivo://ivoa.net/vospace/core#title" readOnly="False">test de création</vos:property>
-  	<vos:property uri="ivo://ivoa.net/vospace/core#language">français</vos:property>
-  	<vos:property uri="ivo://ivoa.net/vospace/core#description">FooBarTotoTiti</vos:property>
-  </vos:properties>
-  <vos:accepts/>
-  <vos:provides/>
-  <vos:capabilities/>
-  <vos:nodes/>
-</vos:node>""")
-print(b)
+# a = Parser()
+# b = a.xml_parser("""<?xml version="1.0" encoding="UTF-8"?>
+# <vos:node xmlns:xs="http://www.w3.org/2001/XMLSchema-instance"
+#     xmlns:vos="http://www.ivoa.net/xml/VOSpace/v2.1" xs:type="vos:ContainerNode" uri="vos://example.com!nodes/myresult1/BBBBB">
+#   <vos:properties>
+#   	<vos:property uri="ivo://ivoa.net/vospace/core#title" readOnly="False">test de création</vos:property>
+#   	<vos:property uri="ivo://ivoa.net/vospace/core#language">français</vos:property>
+#   	<vos:property uri="ivo://ivoa.net/vospace/core#description">FooBarTotoTiti</vos:property>
+#   </vos:properties>
+#   <vos:accepts/>
+#   <vos:provides/>
+#   <vos:capabilities/>
+#   <vos:nodes/>
+# </vos:node>""")
+# print(b)

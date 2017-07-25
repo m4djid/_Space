@@ -81,6 +81,10 @@ if schema.validate(a):
 else:
     print (schema.error_log)
 
+
+path = '/book/html/wa/foo/bar/'
+print(path[path.find('wa'):])
+
 # #
 # # print("-"*100)
 # #

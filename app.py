@@ -3,18 +3,25 @@ from functools import wraps
 import os
 from vospace import Vospace
 from flask import Flask, request, Response, render_template, make_response
-from flask_restplus import Api, Resource
+from flask_restplus import Api, Resource, fields, model
 from time import sleep
 from parser import Parser
 
 app = Flask(__name__)
 
-
-
 api = Api(app, version='1.0', title='CDS VOSpace',
     description='Prototype de VOSpace')
 app.config.SWAGGER_UI_LANGUAGES = ['en', 'fr']
 app.config.SWAGGER_UI_DOC_EXPANSION = 'list'
+
+create = api.model('vos:node', {
+    'vos:properties' : {'vos:property' : fields.List(fields.String)},
+    'vos:accepts': {'vos:accept' : fields.List(fields.String)},
+    'vos:provides' :{'vos:provide' : fields.List(fields.String)},
+    'vos:capabilities' : {'vos:capability' : fields.List(fields.String)},
+    'vos:nodes': {'vos:node' : fields.List(fields.String)}
+})
+
 
 if app.debug is not True:
     import logging
@@ -27,7 +34,7 @@ if app.debug is not True:
 
 def check_auth(username, password):
     # Test account
-    user = ['iyapici' , 'm']
+    user = ['iyapici' , 'myresult1', 'taplib', 'm']
     mdp = ['cds', 'b']
     if username in user and password in mdp:
         return username and password
@@ -39,6 +46,7 @@ def authenticate():
     'Could not verify your access level for that URL.\n'
     'You have to login with proper credentials', 401,
     {'WWW-Authenticate': 'Basic realm="Login Required"'})
+
 
 def requires_auth(f):
     @wraps(f)
@@ -62,7 +70,7 @@ def requires_auth(f):
 #     return make_response(render_template('nodes.html'), 200)
 
 
-@api.route('/nodes/<path:path>')
+@api.route('/nodes/<path:path>', strict_slashes=False)
 class MyResource(Resource):
     @requires_auth
     @api.response(200, "Représentation de la node")
@@ -108,29 +116,31 @@ class MyResource(Resource):
     def delete(self, path):
         return Response(Vospace().deleteNode("nodes/"+path), status=204, mimetype='text/xml')
 
-@api.route('/nodes/<string:account>')
+@api.route('/nodes/<string:account>/', strict_slashes=False)
 class MyAccount(Resource):
-    @api.doc(params={'XML': 'XML de modification de la node'})
-    @api.doc('Modifie les metadonnées d\'une node')
-    @api.response(200, "Node modifiée")
-    @api.response(404, "Node non trouvée")
-    @requires_auth
-    def post(self, account):
-        xmltodict = Parser().xml_parser(request.data.decode("utf-8"))
-        Vospace().setNode(xmltodict['cible'], xmltodict['parent'], xmltodict['ancestor'], xmltodict['properties'])
-        node = Vospace().getNode(xmltodict['cible'], xmltodict['parent'], xmltodict['ancestor'])
-        return Response(node, status=200, mimetype='text/xml')
+        @api.doc(params={'XML': 'XML de modification de la node'})
+        @api.doc('Modifie les metadonnées d\'une node')
+        @api.response(200, "Node modifiée")
+        @api.response(404, "Node non trouvée")
+        @requires_auth
+        def post(self, account):
+            xmltodict = Parser().xml_parser(request.data.decode("utf-8"))
+            Vospace().setNode(xmltodict['cible'], xmltodict['parent'], xmltodict['ancestor'], xmltodict['properties'])
+            node = Vospace().getNode(xmltodict['cible'], xmltodict['parent'], xmltodict['ancestor'])
+            return Response(node, status=200, mimetype='text/xml')
+        @api.doc(params={'XML': 'XML de création de la node'})
+        @api.doc('Création d\'une node')
+        @api.response(201, "Représentation de la node créée")
+        @api.response(500, "Erreur interne")
+        @requires_auth
+        def put(self, account):
+            xmltodict = Parser().xml_parser(request.data.decode("utf-8"))
+            print("file : ", request.stream)
+            print(xmltodict)
+            Vospace().createNode(xmltodict)
+            node = Vospace().getNode(xmltodict['cible'], xmltodict['parent'], xmltodict['ancestor'])
+            return Response(node, status=201, mimetype='text/xml')
 
-    @api.doc(params={'XML': 'XML de création de la node'})
-    @api.doc('Création d\'une node')
-    @api.response(201, "Représentation de la node créée")
-    @api.response(500, "Erreur interne")
-    @requires_auth
-    def put(self, account):
-        xmltodict = Parser().xml_parser(request.data.decode("utf-8"))
-        Vospace().createNode(xmltodict)
-        node = Vospace().getNode(xmltodict['cible'], xmltodict['parent'], xmltodict['ancestor'])
-        return Response(node, status=201, mimetype='text/xml')
 
 
 # @app.route("/nodes/iyapici",  strict_slashes=False, methods=['GET', 'POST', 'PUT'])
@@ -179,7 +189,7 @@ class MyAccount(Resource):
 
 
 
-@api.route("/protocols")
+@api.route("/protocols", strict_slashes=False)
 class Protocol(Resource):
     def get(self):
         body = Vospace().getVOSpaceSettings("protocols")
@@ -189,7 +199,7 @@ class Protocol(Resource):
             make_response(render_template("404.html"), 404)
 
 
-@api.route("/views")
+@api.route("/views", strict_slashes=False)
 class _View(Resource):
     def get(self):
         body = Vospace().getVOSpaceSettings("views")
@@ -199,7 +209,7 @@ class _View(Resource):
             make_response(render_template("404.html"), 404)
 
 
-@api.route("/properties")
+@api.route("/properties", strict_slashes=False)
 class Properties(Resource):
     def get(self):
         body = Vospace().getVOSpaceSettings("properties")
@@ -208,7 +218,7 @@ class Properties(Resource):
         else:
             make_response(render_template("404.html"), 404)
 
-@app.route("/errors")
+@app.route("/errors", strict_slashes=False)
 def api_error():
     return make_response(render_template("errors.html"))
 

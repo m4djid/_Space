@@ -110,9 +110,10 @@ def fstodictionary(path, properties=None):
     parent = os.path.basename(os.path.abspath(os.path.join(path, os.pardir)))
     if parent == "nodes":
         parent = ''
+    _path = path[path.find('nodes'):]
     representation = {
         'node': filename,
-        'path': path,
+        'path': _path,
         'ownerId': owner,
         'busy': "False",
         'parent': parent,

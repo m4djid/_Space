@@ -1,13 +1,13 @@
 # Classe traduisant les instructions en actions
 import os
 import shutil
-import time
 from copy import deepcopy
 
-from XML.settings import fstodictionary
 from db import Handler as mydb
+from settings import fstodictionary
+from voparser import Parser as xml
+
 from genericbackend import Backend
-from parser import Parser as xml
 
 
 class Vospace(Backend):
@@ -59,7 +59,7 @@ class Vospace(Backend):
 
 
     def createNode(self, dictionary):
-        start_time = time.time()
+
         # Create node
         # _path, target = os.path.split(dictionary['path'])
         # _, parent = os.path.split(_path)
@@ -76,9 +76,9 @@ class Vospace(Backend):
                 return 'Directory creation failed. Error %s' % e
 
             if os.path.exists(dictionary['path']):
-                mydb().insertDB(fstodictionary(dictionary['path']))
+                mydb().insertDB(fstodictionary(dictionary['path'], details=1))
                 self.setNode(dictionary['cible'], dictionary['parent'], ancestor, dictionary['properties'])
-                print("%s seconds" % (time.time() - start_time))
+
 
         else:
             return "FileExistsError"

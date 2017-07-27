@@ -1,11 +1,11 @@
-# from VoPackage import settings as start
-from functools import wraps
 import os
-from vospace import Vospace
+from datetime import datetime
+from functools import wraps
 from flask import Flask, request, Response, render_template, make_response
-from flask_restplus import Api, Resource, fields, model
-from time import sleep
-from parser import Parser
+from flask_restplus import Api, Resource
+import settings
+from voparser import Parser
+from vospace import Vospace
 
 app = Flask(__name__)
 
@@ -14,21 +14,14 @@ api = Api(app, version='1.0', title='CDS VOSpace',
 app.config.SWAGGER_UI_LANGUAGES = ['en', 'fr']
 app.config.SWAGGER_UI_DOC_EXPANSION = 'list'
 
-create = api.model('vos:node', {
-    'vos:properties' : {'vos:property' : fields.List(fields.String)},
-    'vos:accepts': {'vos:accept' : fields.List(fields.String)},
-    'vos:provides' :{'vos:provide' : fields.List(fields.String)},
-    'vos:capabilities' : {'vos:capability' : fields.List(fields.String)},
-    'vos:nodes': {'vos:node' : fields.List(fields.String)}
-})
-
 
 if app.debug is not True:
     import logging
     from logging.handlers import RotatingFileHandler
     file_handler = RotatingFileHandler('templates/errors.html', maxBytes=1024 * 1024 * 100, backupCount=200)
     file_handler.setLevel(logging.ERROR)
-    formatter = logging.Formatter("<br><br><table><tr><td><font color=\"red\"> %(asctime)s- %(name)s - %(levelname)s - %(message)s</font><tr></table>")
+    formatter = logging.Formatter("<br><br><table><tr><td><font color=\"red\">"
+                                  " %(asctime)s- %(name)s - %(levelname)s - %(message)s</font><tr></table><br>")
     file_handler.setFormatter(formatter)
     app.logger.addHandler(file_handler)
 
@@ -57,7 +50,20 @@ def requires_auth(f):
         return f(*args, **kwargs)
     return decorated
 
+def line_prepender(filename, line):
+    with open(filename, 'r+') as f:
+        content = f.read()
+        f.seek(0, 0)
+        f.write(line.rstrip('\r\n') + '\n' + content)
 
+def er_log (path, message, data):
+    _data = data.decode("utf-8")
+    line_prepender("templates/errors.html",
+        "<br><br><table><tr><td><font color=\"red\">" + datetime.now().strftime('%Y-%m-%d %H:%M:%S')+
+                   "  ERROR on " + path + " [PUT] </td><td> XML mal formé : "+ message +
+                   "</font></td></tr></table><br><textarea rows=\"8\" cols=\"100\" style=\"border:none;\">" + _data +"</textarea><br>")
+
+    return "500 xml mal formé data : "+ _data
 
 # @app.route('/', methods=['GET', 'POST', 'PATCH', 'PUT', 'DELETE'])
 # def api_root():
@@ -99,16 +105,21 @@ class MyResource(Resource):
     #     node = Vospace().getNode(xmltodict['cible'], xmltodict['parent'], xmltodict['ancestor'])
     #     return Response(node, status=200, mimetype='text/xml')
     #
-    # @api.doc(params={'XML' : 'XML de création de la node'})
-    # @api.doc('Création d\'une node')
-    # @api.response(201, "Représentation de la node créée")
-    # @api.response(500, "Erreur interne")
-    # @requires_auth
-    # def put(self,path):
-    #     xmltodict = Parser().xml_parser(request.data.decode("utf-8"))
-    #     Vospace().createNode(xmltodict)
-    #     node = Vospace().getNode(xmltodict['cible'], xmltodict['parent'], xmltodict['ancestor'])
-    #     return Response(node, status=201, mimetype='text/xml')
+    @api.doc(params={'XML': 'XML de création de la node'})
+    @api.doc('Création d\'une node')
+    @api.response(201, "Représentation de la node créée")
+    @api.response(500, "Erreur interne")
+    @requires_auth
+    def put(self, path):
+        xmltodict = Parser().xml_parser(request.data.decode("utf-8"))
+        if isinstance(xmltodict, dict):
+            Vospace().createNode(xmltodict)
+            node = Vospace().getNode(xmltodict['cible'], xmltodict['parent'], xmltodict['ancestor'])
+            return Response(node, status=201, mimetype='text/xml')
+        else:
+            a = er_log(path=path, message=xmltodict, data=request.data)
+            print("*")
+            return Response(a, status=500)
 
     @api.doc("Suppréssion d'une node")
     @api.response(204, "Node deleted \n")
@@ -128,18 +139,18 @@ class MyAccount(Resource):
             Vospace().setNode(xmltodict['cible'], xmltodict['parent'], xmltodict['ancestor'], xmltodict['properties'])
             node = Vospace().getNode(xmltodict['cible'], xmltodict['parent'], xmltodict['ancestor'])
             return Response(node, status=200, mimetype='text/xml')
-        @api.doc(params={'XML': 'XML de création de la node'})
-        @api.doc('Création d\'une node')
-        @api.response(201, "Représentation de la node créée")
-        @api.response(500, "Erreur interne")
-        @requires_auth
-        def put(self, account):
-            xmltodict = Parser().xml_parser(request.data.decode("utf-8"))
-            print("file : ", request.stream)
-            print(xmltodict)
-            Vospace().createNode(xmltodict)
-            node = Vospace().getNode(xmltodict['cible'], xmltodict['parent'], xmltodict['ancestor'])
-            return Response(node, status=201, mimetype='text/xml')
+        # @api.doc(params={'XML': 'XML de création de la node'})
+        # @api.doc('Création d\'une node')
+        # @api.response(201, "Représentation de la node créée")
+        # @api.response(500, "Erreur interne")
+        # @requires_auth
+        # def put(self, account):
+        #     xmltodict = Parser().xml_parser(request.data.decode("utf-8"))
+        #     print("file : ", request.stream)
+        #     print(xmltodict)
+        #     Vospace().createNode(xmltodict)
+        #     node = Vospace().getNode(xmltodict['cible'], xmltodict['parent'], xmltodict['ancestor'])
+        #     return Response(node, status=201, mimetype='text/xml')
 
 
 

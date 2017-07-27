@@ -20,49 +20,52 @@ class Parser(object):
             "capabilities": [],
         }
 
-        root = ET.fromstring(xml)
+        try:
+            root = ET.fromstring(xml)
+        except ET.ParseError as e:
+            return "%s" % e
+        else:
+            for k, v in root.attrib.items():
+                if "type" in k:
+                    xmltodict['properties'] = {'type': [v[v.rfind(":"):][1:], "True"]}
+                elif k == "uri":
+                    uri, cible = os.path.split(v[v.rfind("!"):][1:])
+                    ancestor, parent = os.path.split(uri)
+                    if not ancestor:
+                        # MongoDB ancestor field will not work if
+                        # ancestor = ['']
+                        ancestor = []
+                    else:
+                        ancestor = ancestor.split(os.sep)
+                    if "nodes" in ancestor:
+                        ancestor.remove("nodes")
+                    xmltodict['cible'] = cible
+                    xmltodict['parent'] = parent
+                    xmltodict['path'] = uri + "/" + cible
+                    xmltodict['ancestor'] = ancestor
 
-        for k, v in root.attrib.items():
-            if "type" in k:
-                xmltodict['properties'] = {'type': [v[v.rfind(":"):][1:], "True"]}
-            elif k == "uri":
-                uri, cible = os.path.split(v[v.rfind("!"):][1:])
-                ancestor, parent = os.path.split(uri)
-                if not ancestor:
-                    # MongoDB ancestor field will not work if
-                    # ancestor = ['']
-                    ancestor = []
-                else:
-                    ancestor = ancestor.split(os.sep)
-                if "nodes" in ancestor:
-                    ancestor.remove("nodes")
-                xmltodict['cible'] = cible
-                xmltodict['parent'] = parent
-                xmltodict['path'] = uri + "/" + cible
-                xmltodict['ancestor'] = ancestor
+            for childrens in root:
+                if "properties" in childrens.tag:
+                    ind = ''
+                    for subchildrens in childrens:
+                        for k, v in sorted(subchildrens.items()):
+                            _ = ''
+                            # Création d'une variable temporaire _ pour stocker la valeur de readonly
+                            # le dictionnaire pouvant ne pas être dans l'ordre
+                            if k in ['readonly', 'readOnly']:
+                                _ = v
+                                if ind != '':
+                                    if len(xmltodict['properties'][ind]) < 2:
+                                        xmltodict['properties'][ind].append(_)
+                                    else:
+                                        xmltodict['properties'][ind][1] = _
+                            if k == "uri":
+                                ind = v[v.rfind("#"):][1:]
+                                if not _:
+                                    _ = "False"
+                                xmltodict['properties'][ind] = [subchildrens.text, _]
 
-        for childrens in root:
-            if "properties" in childrens.tag:
-                ind = ''
-                for subchildrens in childrens:
-                    for k, v in sorted(subchildrens.items()):
-                        _ = ''
-                        # Création d'une variable temporaire _ pour stocker la valeur de readonly
-                        # le dictionnaire pouvant ne pas être dans l'ordre
-                        if k in ['readonly', 'readOnly']:
-                            _ = v
-                            if ind != '':
-                                if len(xmltodict['properties'][ind]) < 2:
-                                    xmltodict['properties'][ind].append(_)
-                                else:
-                                    xmltodict['properties'][ind][1] = _
-                        if k == "uri":
-                            ind = v[v.rfind("#"):][1:]
-                            if not _:
-                                _ = "False"
-                            xmltodict['properties'][ind] = [subchildrens.text, _]
-
-        return xmltodict
+            return xmltodict
 
     # def var_assign(self, node, string, idx):
     #     global url_fichier, attribut_direction, vu

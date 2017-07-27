@@ -7,8 +7,8 @@ import os
 import time
 from copy import deepcopy
 from datetime import datetime
-
 from db import Handler
+
 
 RACINE = "./nodes"
 PROTOCOL = {
@@ -51,7 +51,6 @@ VIEWS = {
         'zip': 'ivo://ivoa.net/vospace/core#zip',
         'tar.gz': 'ivo://ivoa.net/vospace/core#targz'
     }
-
 PropertiesDict = {
     'title': {"title": '', "readonly": "False"},
     'creator': {"creator": '', "readonly": "False"},
@@ -79,7 +78,6 @@ PropertiesDict = {
     'btime': {"btime": '', "readonly": "True"},
 }
 
-
 def octet(entier):
     taille_ = entier
     retour = ''
@@ -102,7 +100,7 @@ def getsizedir(start_path):
 
 
 # Get node representation from the filesystem as dictionary
-def fstodictionary(path, properties=None):
+def fstodictionary(path, properties=None, details=None):
     tempdate = datetime.fromtimestamp(os.path.getmtime(path))
     mdate = tempdate.strftime("%Y-%m-%d %H:%M:%S")
     owner = str(os.stat(path).st_uid)
@@ -111,37 +109,42 @@ def fstodictionary(path, properties=None):
     if parent == "nodes":
         parent = ''
     _path = path[path.find('nodes'):]
-    representation = {
-        'node': filename,
-        'path': _path,
-        'ownerId': owner,
-        'busy': "False",
-        'parent': parent,
-        'ancestor': [],
-        'accepts': [],
-        'provides': [],
-    }
-    if properties:
-        representation['properties'] = deepcopy(properties)
-    else:
-        representation['properties'] = deepcopy(Handler().getPropertiesDict())
-    representation['properties']['mtime'] = {"mtime": "Modified " + mdate, 'readonly': "True"}
-    representation['properties']['ctime'] = {"ctime": "MetaData modified " + datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
-                                        'readonly': "True"}
-    representation['properties']['btime'] = {
-        "btime": "Creation date " + datetime.fromtimestamp(os.path.getctime(path)).strftime(
-            "%Y-%m-%d %H:%M:%S"), 'readonly': "True"}
-    if os.path.isdir(path):
-        representation['properties']['type'] = {'type': 'ContainerNode', 'readonly': "True"}
-    elif os.path.isfile(path):
-        representation['properties']['type'] = {'type': 'DataNode', 'readonly': "True"}
-    representation['size'] = octet(os.path.getsize(path))
-    mathusalem = path.split(os.sep)
-    list = [".", "nodes", representation['parent'], representation['node']]
-    for items in mathusalem:
-        if items not in list:
-            representation['ancestor'].append(items)
-    return representation
+    if details:
+        representation = {
+            'node': filename,
+            'path': _path,
+            'ownerId': owner,
+            'busy': "False",
+            'parent': parent,
+            'ancestor': [],
+            'accepts': [],
+            'provides': [],
+        }
+        if properties:
+            representation['properties'] = deepcopy(properties)
+        else:
+            representation['properties'] = deepcopy(Handler().getPropertiesDict())
+        representation['properties']['mtime'] = {"mtime": "Modified " + mdate, 'readonly': "True"}
+        representation['properties']['ctime'] = {"ctime": "MetaData modified " + datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
+                                                 'readonly': "True"}
+        representation['properties']['btime'] = {
+            "btime": "Creation date " + datetime.fromtimestamp(os.path.getctime(path)).strftime(
+                "%Y-%m-%d %H:%M:%S"), 'readonly': "True"}
+        if os.path.isdir(path):
+            representation['properties']['type'] = {'type': 'ContainerNode', 'readonly': "True"}
+        elif os.path.isfile(path):
+            representation['properties']['type'] = {'type': 'DataNode', 'readonly': "True"}
+        representation['size'] = octet(os.path.getsize(path))
+        mathusalem = path.split(os.sep)
+        list = [".", "nodes", representation['parent'], representation['node']]
+        for items in mathusalem:
+            if items not in list:
+                representation['ancestor'].append(items)
+
+        return representation
+    if not details:
+        minrep = {'node': filename, 'path': _path}
+        return minrep
 
 
 def populatemeta():
@@ -181,16 +184,36 @@ def populatefiles():
     for dir, subdirs, files in os.walk(RACINE):
         for x in subdirs:
             i = i + 1
-            Handler().insertDB(fstodictionary(os.path.join(dir, x), defaultproperties))
+            Handler().insertDB(fstodictionary(os.path.join(dir, x), defaultproperties, 1))
         for y in files:
             j = j + 1
-            Handler().insertDB(fstodictionary(os.path.join(dir, y), defaultproperties))
+            Handler().insertDB(fstodictionary(os.path.join(dir, y), defaultproperties, 1))
     total = i+j
-    print(str(total) + " files added in %s seconds" % (time.time() - start_time))
+    print("%s files added in %s seconds" % (str(total), (time.time() - start_time)))
 
+def fsdbcomparator():
+    database = []
+    FS = []
+    cursor = Handler().connexion().find({'node': {'$exists': True}}, {'node': 1, 'path': 1, '_id': 0})
+    for items in cursor:
+        database.append(items)
+
+    for dir, subdirs, files in os.walk("./nodes"):
+        for x in subdirs:
+            FS.append(fstodictionary(os.path.join(dir, x)))
+        for y in files:
+            FS.append(fstodictionary(os.path.join(dir, y)))
+
+    r = [x for x in database + FS if x not in database or x not in FS]
+    if len(r) > 0:
+        for items in r:
+            Handler().insertDB(fstodictionary(items['path'], details=1))
+        print("Database Updated : %s node(s)" % len(r))
+    else:
+        print("Database up to date")
 
 # Startup check up, if the app crashed and the DB is empty, it update it from FS
-def startup():
+def main():
     try:
         if Handler().connexion().find({"service": "vospace"}).count() == 0:
             populatemeta()
@@ -199,21 +222,9 @@ def startup():
             populatefiles()
             print("Database ready")
         else:
-            # TO DO: Comparaison FS et DB au lancement.
-            # database = []
-            # FS = []
-            # cursor = Handler.connexion(Handler()).find({'node': { '$exists': True }},{'_id': False})
-            # for items in cursor:
-            #     database.append(items)
-            # for items in os.listdir("./VOTest/VOSpace/nodes/"):
-            #     for dir, subdirs, files in os.walk("./VOTest/VOSpace/nodes/" + items):
-            #         for x in subdirs:
-            #             FS.append(fsToDict(os.path.join(dir, x)))
-            #         for y in files:
-            #             FS.append(fsToDict(os.path.join(dir, y)))
             print("Database: OK")
+            fsdbcomparator()
     except ConnectionError as e:
         return e
 
-
-startup()
+main()
